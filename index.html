@@ -60,15 +60,14 @@
                         </code></pre>
 
                         <pre><code contenteditable>
-        // Default methods
-        { 
-            'get':    {method:'GET'},
-            'save':   {method:'POST'},
-            'query':  {method:'GET', isArray:true},
-            'remove': {method:'DELETE'},
-            'delete': {method:'DELETE'} 
-        };
-                        </code></pre>
+// Default methods
+{ 
+    'get':    {method:'GET'},
+    'save':   {method:'POST'},
+    'query':  {method:'GET', isArray:true},
+    'remove': {method:'DELETE'},
+    'delete': {method:'DELETE'} 
+};</code></pre>
                         <p><i>... and more!</i></p>
                     </section>
 
@@ -88,17 +87,14 @@ User.prototype.hackStuff = function(p) { this.current = p; }
                     <section>
                         <h2>HTML</h2>
                         <pre><code contenteditable>
-
-        &lt;div ng-controller="ItemsController"&gt;
-            &lt;p&gt;Total items: &lt;input ng-model="items" type="number" /&gt;&lt/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Total items {{ items }} &lt;/li&gt;
-                &lt;li&gt;Total added {{ addTwo(items) }} &lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;div&gt;
-
-                        </code></pre>
-                        <p>I prefer my templates in HTML, not Javascript, thank you.</p>
+&lt;div ng-controller="ItemsController"&gt;
+    &lt;p&gt;Total items: &lt;input ng-model="items" type="number" /&gt;&lt/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Total items {{ items }} &lt;/li&gt;
+        &lt;li&gt;Total added {{ addTwo(items) }} &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;div&gt;</code></pre>
+                        <p>Templates in HTML, niet in Javascript!</p>
                   </section>
                   <section>
                     <h2>Controllers</h2>
@@ -165,8 +161,8 @@ function ItemController($scope)
 
 var DemoAppModule = angular.module('DemoApp', ['models']).
                 config(function($interpolateProvider) {
-        $interpolateProvider.startSymbol('<[');
-        $interpolateProvider.endSymbol(']>');
+        $interpolateProvider.startSymbol('&lt;[');
+        $interpolateProvider.endSymbol('&gt;');
     });
 
                         </code></pre>
@@ -213,6 +209,33 @@ var DemoAppModule = angular.module('DemoApp', ['models']).
                         </code></pre>
                     </section>
 
+                    <section>
+                        <h2>Directives</h2>
+                        
+                        <div>
+                          <p>Pas de HTML aan zo als jij dat wilt. Mis je een &lt;tab&gt; 
+                            tag in HTML dan kan je hem hiermee maken.</p>
+                          
+                          <p>Eigenlijk een MVC in een tag.</p>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Testen</h2>
+                        
+                        <div>
+                          <p>Dat zit er bij net als bij Symfony.</p>
+                          <p>Heet TestAngular en werkt als unit testen.</p>
+                          
+                          <pre><code contenteditable>
+Starting Testacular Server (http://vojtajina.github.com/testacular)
+-------------------------------------------------------------------
+info: Testacular server started at http://localhost:9876/
+info (launcher): Starting browser Chrome
+info (Chrome 25.0): Connected on socket id TszbEIbJKa9gxm647LC3
+Chrome 25.0: Executed 10 of 10 SUCCESS (0.435 secs / 0.1 secs)
+</code></pre>
+                        </div>
+                    </section>
                 </section>
 
                 <section>
@@ -286,7 +309,102 @@ HA.config(function($routeProvider, $locationProvider) {
                         <p>But it chooses its friends carefully</p>
                     </section>
                 </section>
-
+                
+                <section>
+                  <section>
+                    <h2>Waarom handig?</h2>
+                    <div>
+                      <ul>
+                        <li>Meer logica naar de client</li>
+                        <li>Geeft een betere response naar de gebruiker</li>
+                        <li>Minder load op de server</li>
+                        <li>Er komen steeds meer apps</li>
+                        <li>Apps en web pagina's kunnen de zelfde backend API gebruiken</li>
+                      </ul>
+                      
+                    </div>
+                  </section>
+                  <section>
+                    <h2>Vraag hoevel % code PHP / Javascript</h2>
+                    <div>
+                      <p>In 2010?</p>
+                      <p>In 2013?</p>
+                      <p>In 2015?</p>
+                    </div>
+                    
+                  </section>
+                </section>
+                
+                <section>
+                  <section>
+                    <h2>Hoe beide te gebruiken?</h2>
+                      <p>Voeg AngulerJS toe aan je twig template</p>
+                       
+                      <pre><code contenteditable>{% block foot_script %}
+  {% if app.debug %}
+    &lt;script type="text/javascript" src="{{ asset('bundles/demo/js/angular/angular.js') }}">&lt;/script>
+    &lt;script type="text/javascript" src="{{ asset('bundles/demo/js/angular/angular-resource.js') }}">&lt;/script>
+    &lt;script type="text/javascript" src="{{ asset('bundles/demo/js/angular/angular-ui.js') }}">&lt;/script>
+  {% else %}
+    {%- javascripts
+      '@DemoBundle/Resources/public/js/angular/angular.min.js'
+      '@DemoBundle/Resources/public/js/angular/angular-resource.min.js'
+      '@DemoBundle/Resources/public/js/angular/angular-ui.min.js'
+    %}
+      &lt;script type="text/javascript" src="{{ asset_url }}">&lt;/script>
+    {% endjavascripts %}
+  {% endif %}
+&lt;script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}">&lt;/script>
+&lt;script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}">&lt;/script>
+{% endblock %}</code></pre>
+                      <p>Let op! In dev mode gebruik niet de minified versie. Dat debugt niet echt handig in Javascript</p>
+                  </section>
+                  <section>
+                    <h2>Twig &amp; AngularJS templates</h2>
+                    <div>
+                      <p>Aangezien zowel AngularJS als Twig <strong>{{ }}</strong> gebruikt voor variable.</p>
+                      <p>Moet er één worden aangepast.</p>
+                      <p>Handigst is AngularJS op de volgende manier:</p>
+                      
+                             <pre><code contenteditable>
+var DemoAppModule = angular.module('DemoApp', ['models']).
+                config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('&lt;[');
+        $interpolateProvider.endSymbol('&gt;');
+    });
+                        </code></pre>
+                      <p>
+                    </div>
+                  </section>
+                </section>
+                <section>
+                  <section>
+                  <h2>FOSRestBundle</h2>
+                  <div>
+                    <p>Met de hulp van deze bundle krijg je data die normaal naar twig gaat eenvoudig terug als json response</p>
+<pre><code contenteditable>
+    public function booksAction($name)
+    {
+      $view = View::create(array('books' => array("Book $name 1", "Book $name 2"), 'name' => $name));
+      
+      $view->setTemplate('AcmeDemoBundle:Demo:hello.html.twig');
+      $handler = $this->get('fos_rest.view_handler');
+      
+      return $handler->handle($view);
+    }
+</code></pre>
+                    
+                    <p>Geeft voor app_dev.php/demo/books/Iwan?_format=json </p>
+                    <pre><code contenteditable>
+{"books":["Book Iwan 1","Book Iwan 2"],"name":"Iwan"}
+</code></pre>
+                  </div>
+                  </section>
+                </section>
+                
+                <section>
+                  <h2>Vragen</h2>
+                </section>
 			</div>
 
 		</div>
