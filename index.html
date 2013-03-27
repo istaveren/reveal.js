@@ -37,9 +37,16 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 
-              <section><h1>Symfony</h1><h1>&amp;</h1><h1>angularjs</h1><p><br /></p><p><br /></p><p>26 maart 2013</p><p>Iwan van Staveren</p></section>
+              <section><h1><img src="http://symfony.com/images/common/logo/logo_symfony_header.png" style="border: 0.0px;color: rgb(0,0,0);letter-spacing: -0.02em;" /></h1><h1>&amp;</h1>
+                  <h1><img src="http://angularjs.org/img/AngularJS-large.png" style="height: 108.0px;border: 0.0px;vertical-align: middle;width: 383.0px;" /></h1>
+                  
+                  <p><br /></p><p><br /></p><p>26 maart 2013</p><p>Iwan van Staveren</p>
+              </section>
               <section><h2>Agenda</h2><div><br /></div><div><ul><li>Wie ben ik</li><li>Wat is Symfony</li><li>Wat is AngularJS</li><li>Waarom handig?</li><li>Hoe beide te gebruiken</li><li>Twig</li><li>FosRestBundle</li><li>Vragen</li></ul></div><div><br /></div><div><br /></div></section>
-              <section><h2>Wie ben ik?</h2>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>Iwan van Staveren</div>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>Software architect bij Oracle</div>&#10;<div>13 jaar ervaring met PHP</div>&#10;<div>7 jaar ervaring met Symfony</div>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>&#10;&#10;<a href="http://nl.linkedin.com/in/iwanvanstaveren">&#10;      &#10;          <img height="33" src="http://www.linkedin.com/img/webpromo/btn_viewmy_120x33.png" width="120" />&#10;          </a>&#10;&#10;<font face="arial">iwanvanstaveren&#10;</font>&#10;&#10;<font face="courier new">    </font>&#10;&#10;    <br />&#10;</div><div><font face="arial">Twitter: istaveren</font></div>&#10;<div>&#10;    <br />&#10;</div>&#10;&#10;&#10;&#10;&#10;</section>
+              <section><h2>Wie ben ik?</h2>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>Iwan van Staveren</div>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>Software architect bij Oracle</div>&#10;<div>13 jaar ervaring met PHP</div>&#10;<div>7 jaar ervaring met Symfony</div>&#10;<div>&#10;    <br />&#10;</div>&#10;<div>&#10;&#10;
+                  <img height="33" src="http://www.linkedin.com/img/webpromo/btn_viewmy_120x33.png" width="120" /><a href="nl.linkedin.com/in/iwanvanstaveren" class="roll">
+                      <span data-title="nl.linkedin.com/in/iwanvanstaveren">nl.linkedin.com/in/iwanvanstaveren</span></a><br /></div>
+                <div><font face="arial">Twitter: @istaveren</font></div>&#10;<div>&#10;    <br />&#10;</div>&#10;&#10;&#10;&#10;&#10;</section>
               <section><h2>Wat is <img src="http://symfony.com/images/common/logo/logo_symfony_header.png" style="border: 0.0px;color: rgb(0,0,0);letter-spacing: -0.02em;" />?</h2><div><br /></div><div>Dat weten we hier wel :-)</div><div><br /></div><div>Volgens <a href="http://symfony.com">symfony.com</a></div><div><br /></div><div><div>Symfony is a PHP Web Development Framework.&nbsp;</div><div>That doesn&rsquo;t answer your question?&nbsp;</div><div>Ok, let&rsquo;s try that again.&nbsp;</div><div>Symfony is a PHP Framework, a Philosophy, and a Community - all working together in harmony.</div></div>&#10;</section>
               <section>
                 <h2>Wat is <a href="http://angularjs.org/">AngularJS</a><br /></h2><div>Een open-source Javascript framework</div><div><br /></div><div>Of zo als ze het zelf zeggen:</div><div><div style="color: rgb(51,51,51);font-size: 13.0px;font-style: normal;font-variant: normal;line-height: 18.0px;"><br /></div><div style="color: rgb(51,51,51);font-size: 13.0px;font-style: normal;font-variant: normal;line-height: 18.0px;"><img src="http://angularjs.org/img/AngularJS-large.png" style="height: 108.0px;border: 0.0px;vertical-align: middle;width: 383.0px;" /></div><div style="color: rgb(51,51,51);font-size: 13.0px;font-style: normal;font-variant: normal;line-height: 18.0px;"><h1 style="margin-bottom: 0.0px;color: rgb(83,83,83);font-size: 30.0px;line-height: 1;letter-spacing: -1.0px;padding-top: 1.5em;padding-bottom: 1.0em;">HTML enhanced for web apps!</h1><div><br /></div><div><br /></div><div><br /></div></div></div>
@@ -68,7 +75,7 @@
     'remove': {method:'DELETE'},
     'delete': {method:'DELETE'} 
 };</code></pre>
-                        <p><i>... and more!</i></p>
+                        <p><i>... en nog veel meer!</i></p>
                     </section>
 
                     <section>
@@ -138,10 +145,7 @@ function ItemController($scope)
                 <!-- Basic stucture -->
                 <section>
                     <section>
-                        <h1>The Basics</h1>
-                    </section>
-                    <section>
-                        <h2>Getting started</h2>
+                        <h2>Hoe te beginnnen</h2>
                         <pre><code contenteditable>
 
     &lt;html ng-app="HackerApp"&gt;
@@ -152,7 +156,7 @@ function ItemController($scope)
 
 
                         </code></pre>
-                        <p>Angular is happy to live within its own scope</p>
+                        <p>Angular heeft zijn eigen scope in javascript en de DOM</p>
                     </section>
 
                     <section>
@@ -166,7 +170,7 @@ var DemoAppModule = angular.module('DemoApp', ['models']).
     });
 
                         </code></pre>
-                        <p>Global config and setup</p>
+                        <p>Config &amp; setup</p>
                     </section>
 
                     <section>
@@ -224,7 +228,7 @@ var DemoAppModule = angular.module('DemoApp', ['models']).
                         
                         <div>
                           <p>Dat zit er bij net als bij Symfony.</p>
-                          <p>Heet TestAngular en werkt als unit testen.</p>
+                          <p>Heet Karma en werkt als unit testen.</p>
                           
                           <pre><code contenteditable>
 Starting Testacular Server (http://vojtajina.github.com/testacular)
@@ -403,7 +407,11 @@ var DemoAppModule = angular.module('DemoApp', ['models']).
                 </section>
                 
                 <section>
-                  <h2>Vragen</h2>
+                  <h1>Vragen</h1>
+                  
+                  <p style="margin-top:400px">
+                    Credits for the slides: Vojta Jína, Miško Hevery, Igor Minar, Patrick Aljord.
+                  </p>
                 </section>
 			</div>
 
